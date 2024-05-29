@@ -1,0 +1,7 @@
+[workspace]
+members = [
+    "echor",
+    "catr",
+]
+
+resolver = "2"
