@@ -1,6 +1,14 @@
 fn main() {
-    if let Err(e) = catr::get_args().and_then(catr::run) {
-        eprintln!("Error: {}", e);
-        std::process::exit(1);
+    match catr::get_args() {
+        Ok(config) => {
+            if let Err(err) = catr::run(config) {
+                eprintln!("{}", err);
+                std::process::exit(1);
+            }
+        }
+        Err(err) => {
+            eprintln!("{}", err);
+            std::process::exit(1);
+        }
     }
 }
